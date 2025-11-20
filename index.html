@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ユーザー登録</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+  <style>
+    :root {
+      --primary: #002B55;       /* W早稲田ゼミ 濃紺 */
+      --primary-light: #F3F5FA; /* 淡いブルーグレー背景 */
+      --accent-gold: #C8A951;   /* ゴールド */
+      --text-main: #222;
+    }
+
+    body {
+      background-color: var(--primary-light);
+      font-family: "Segoe UI", "Hiragino Sans", "メイリオ", sans-serif;
+      color: var(--text-main);
+    }
+
+    .form-container {
+      max-width: 720px;
+      margin: 2rem auto;
+      padding: 2rem 2.4rem;
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid #e0e4ea;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+    }
+
+    h1 {
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.03em;
+      text-align: center;
+    }
+
+    .section-title {
+      margin-top: 1.6rem;
+      font-weight: 600;
+      color: var(--primary);
+      border-left: 4px solid var(--accent-gold);
+      padding-left: 0.6rem;
+      letter-spacing: 0.02em;
+    }
+
+    .notice {
+      font-size: 0.9rem;
+      color: #8A1F24;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .privacy-box {
+      background: #faf8f2;
+      padding: 1.2rem;
+      border-radius: 8px;
+      border-left: 4px solid var(--primary);
+      font-size: 0.85rem;
+      margin-top: 1.5rem;
+      line-height: 1.5;
+    }
+
+    .btn-primary {
+      background-color: var(--primary) !important;
+      border-color: var(--primary) !important;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      padding-top: 0.6rem;
+      padding-bottom: 0.6rem;
+      border-radius: 8px;
+    }
+
+    .btn-primary:hover {
+      background-color: #001f3d !important;
+      border-color: #001f3d !important;
+    }
+
+    .form-check {
+      margin-bottom: 0.4rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="form-container">
+    <h1>ユーザー登録</h1>
+
+    <p class="notice">
+      塾生生活に必要な情報やお得な特典情報を<br>
+      受け取るために必要です。<br>
+      ※塾生の方は全項目回答必須です※<br>
+      ※塾外生の方は*の項目以外は任意回答です※
+    </p>
+
+    <form id="userForm">
+      <!-- 質問1 -->
+      <p class="section-title">1. 現在W早稲田ゼミの塾生ですか？ <span class="text-danger">*</span></p>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="student" value="塾生" required>
+        <label class="form-check-label">はい</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="student" value="外部生">
+        <label class="form-check-label">いいえ</label>
+      </div>
+
+      <!-- 質問2 -->
+      <p class="section-title">2. 入力者は生徒様ですか？保護者様ですか？</p>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="relationship" value="生徒">
+        <label class="form-check-label">生徒</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="relationship" value="保護者">
+        <label class="form-check-label">保護者</label>
+      </div>
+
+      <p class="notice">
+        <br>入力者が保護者様の場合は、<br>
+        お子様の情報をご入力ください。<br>
+        高校生のお子様が複数いらっしゃる場合は、<br>
+        学年を複数選択していただき、<br>
+        最も下の学年のお子様のお名前をご入力ください。
+      </p>
+
+      <!-- 質問3 -->
+      <p class="section-title">3. 今年の4月からの学年をお選びください。 <span class="text-danger">*</span></p>
+
+      <div class="form-check"><input class="form-check-input check" type="checkbox" name="grade" value="中3"><label class="form-check-label">中3</label></div>
+      <div class="form-check"><input class="form-check-input check" type="checkbox" name="grade" value="高1"><label class="form-check-label">高1</label></div>
+      <div class="form-check"><input class="form-check-input check" type="checkbox" name="grade" value="高2"><label class="form-check-label">高2</label></div>
+      <div class="form-check"><input class="form-check-input check" type="checkbox" name="grade" value="高3"><label class="form-check-label">高3</label></div>
+      <div class="form-check"><input class="form-check-input check" type="checkbox" name="grade" value="その他"><label class="form-check-label">その他</label></div>
+
+      <!-- 質問4 -->
+      <p class="section-title">4. 姓（全角ひらがな）をご入力ください。</p>
+      <input type="text" class="form-control" name="sei" placeholder="すずき" pattern="^[ぁ-ん]+$">
+
+      <!-- 質問5 -->
+      <p class="section-title">5. 名（全角ひらがな）をご入力ください。</p>
+      <input type="text" class="form-control" name="mei" placeholder="いちろう" pattern="^[ぁ-ん]+$">
+
+      <!-- 質問6 -->
+      <p class="section-title">6. 現在お通いの学校名（略称は不可）をご入力ください。</p>
+      <input type="text" class="form-control" name="school" placeholder="ワセダ中学 / ワセダ高校">
+
+      <!-- 個人情報 -->
+      <div class="privacy-box">
+        ＜個人情報の取り扱いについて＞<br>
+        お預かりするお客様情報は、<br>
+        当社の各種商品サービスのご提供・<br>
+        ご案内・企画開発などに利用します。<br>
+        また、外部に委託する場合は管理体制を<br>
+        厳重に確認します。<br>
+        上記に承諾の上、ご登録ください。<br>
+        <div class="text-right mt-2">株式会社早稲田学習研究会</div>
+      </div>
+
+      <!-- ボタン -->
+      <button type="submit" class="btn btn-primary btn-block mt-4">登録</button>
+    </form>
+  </div>
+
+  <!-- JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+
+  <script>
+    $(function () {
+      const liffId = "2008067898-LnyPJ1ra";
+      liff.init({ liffId })
+        .then(() => console.log("LIFF init成功"))
+        .catch(err => console.error("LIFF init失敗", err));
+
+      $('form').submit(function () {
+        let grade = [];
+        $('.check:checked').each(function () {
+          grade.push($(this).val());
+        });
+
+        if (grade.length === 0) {
+          alert("学年を1つ以上選択してください。");
+          return false;
+        }
+
+        const student = $('input[name="student"]:checked').val();
+        const sei = $('input[name="sei"]').val();
+        const mei = $('input[name="mei"]').val();
+        const school = $('input[name="school"]').val();
+        const relationship = $('input[name="relationship"]:checked').val() || "";
+
+        const msg = `＜ユーザー登録情報＞
+${student}
+${sei}
+${mei}
+${school}
+${grade.join(" ")}
+${relationship}`;
+
+        liff.sendMessages([{ type: 'text', text: msg }])
+          .then(() => liff.closeWindow())
+          .catch(err => alert('送信失敗: ' + err));
+
+        return false;
+      });
+    });
+  </script>
+</body>
+</html>
