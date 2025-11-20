@@ -221,7 +221,7 @@ ${schoolSelect}
 ${sei}
 ${mei}
 ${school}
-${grade.join(" ")}`;
+${grade.join(",")}`;
 
         liff.sendMessages([{ type: 'text', text: msg }])
           .then(() => liff.closeWindow())
