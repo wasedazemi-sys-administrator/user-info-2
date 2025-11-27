@@ -191,45 +191,55 @@
 
   <script>
     $(function () {
-      const liffId = "2008067898-LnyPJ1ra";
+      const liffId = "2008539128-5WjZPvYY";
+  
       liff.init({ liffId })
-        .then(() => console.log("LIFF init成功"))
+        .then(() => {
+          console.log("LIFF init成功");
+  
+          // ★ログイン必須
+          if (!liff.isLoggedIn()) {
+            liff.login();
+            return;
+          }
+        })
         .catch(err => console.error("LIFF init失敗", err));
-
+  
       $('form').submit(function () {
         let grade = [];
         $('.check:checked').each(function () {
           grade.push($(this).val());
         });
-
+  
         if (grade.length === 0) {
           alert("学年を1つ以上選択してください。");
           return false;
         }
-
+  
         const student = $('input[name="student"]:checked').val();
         const relationship = $('input[name="relationship"]:checked').val() || "";
         const schoolSelect = $('select[name="schoolSelect"]').val();
         const sei = $('input[name="sei"]').val();
         const mei = $('input[name="mei"]').val();
         const school = $('input[name="school"]').val();
-
+  
         const msg = `＜ユーザー登録情報＞
-${student}
-${relationship}
-${schoolSelect}
-${sei}
-${mei}
-${school}
-${grade.join(",")}`;
-
+  ${student}
+  ${relationship}
+  ${schoolSelect}
+  ${sei}
+  ${mei}
+  ${school}
+  ${grade.join(",")}`;
+  
         liff.sendMessages([{ type: 'text', text: msg }])
           .then(() => liff.closeWindow())
           .catch(err => alert('送信失敗: ' + err));
-
+  
         return false;
       });
     });
   </script>
+
 </body>
 </html>
