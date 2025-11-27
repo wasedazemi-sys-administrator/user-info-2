@@ -223,13 +223,13 @@
         const school = $('input[name="school"]').val();
   
         const msg = `＜ユーザー登録情報＞
-  ${student}
-  ${relationship}
-  ${schoolSelect}
-  ${sei}
-  ${mei}
-  ${school}
-  ${grade.join(",")}`;
+${student}
+${relationship}
+${schoolSelect}
+${sei}
+${mei}
+${school}
+${grade.join(",")}`;
   
         liff.sendMessages([{ type: 'text', text: msg }])
           .then(() => liff.closeWindow())
