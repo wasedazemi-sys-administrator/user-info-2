@@ -200,7 +200,6 @@
           // ★ログイン必須
           if (!liff.isLoggedIn()) {
             liff.login();
-            return;
           }
         })
         .catch(err => console.error("LIFF init失敗", err));
