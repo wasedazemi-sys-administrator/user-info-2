@@ -203,7 +203,30 @@
           }
         })
         .catch(err => console.error("LIFF init失敗", err));
-  
+
+      // ▼ 質問4のタイトル動的切り替え ▼
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = now.getMonth() + 1; // 1-12
+      
+      let displayYear;
+      let text;
+      
+      if (month === 1 || month === 2) {
+        // 1月・2月 → 前年4月基準
+        displayYear = year - 1;
+        text = `${displayYear}年4月の学年をお選びください。`;
+      } else {
+        // 3〜12月 → 今年4月基準
+        displayYear = year;
+        text = `${displayYear}年4月の学年をお選びください。`;
+      }
+      
+      // 質問4のタイトルを書き換え
+      $('.section-title')
+        .filter(function(){ return $(this).text().includes('今年の4月からの学年'); })
+        .html(`4. ${text} <span class="text-danger">*</span>`);
+      
       $('form').submit(function () {
         let grade = [];
         $('.check:checked').each(function () {
